@@ -3,6 +3,7 @@
 
 
 from datetime import datetime
+from time import sleep
 import unittest
 import json
 from models.base_model import BaseModel
@@ -14,4 +15,9 @@ class TestBaseModel(unittest.TestCase):
         b = BaseModel()
         self.assertEqual(type(b.id), str)
         self.assertEqual(type(b.created_at), datetime)
-        self.assertEqual(type(b.updated_at), datetime)
+        b_update = b.updated_at
+        sleep(0.04)
+        b.save()
+        self.assertLess(b_update, b.updated_at)
+        self.assertEqual(str(b), "[{}] ({}) {}".format(b.__class__.__name__, b.id, b.__dict__))
+        self.assertTrue(type(b.to_dict()), dict)
