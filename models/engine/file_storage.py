@@ -18,12 +18,12 @@ class FileStorage:
         FileStorage.__objects[key] = obj
 
     def save(self):
-        odict = FileStorage.__objects
+        objdict = {}
         
-        with open(FileStorage.__file_path, 'w') as f:
-            for key, obj in FileStorage.__objects.items():
-                odict[key] = obj.to_dict()
-            json.dump(odict, f)
+        for key, obj in self.__objects.items():
+            objdict[key] = obj.to_dict()
+        with open(self.__file_path, 'w') as f:
+            json.dump(objdict, f)
 
     def reload(self):
         try:
