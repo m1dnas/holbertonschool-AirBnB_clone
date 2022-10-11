@@ -2,6 +2,7 @@
 """Define the BaseModel Class"""
 
 
+import models
 from uuid import uuid4
 from datetime import datetime
 
@@ -19,18 +20,21 @@ class BaseModel:
                     self.__dict__[key] = datetime.strptime(value, t_format)
                 else:
                     self.__dict__[key] = value
+        else:
+            models.storage.new(self)
 
     def save(self):
         self.updated_at = datetime.now()
+        models.storage.save()
 
 
     def to_dict(self):
-        dictionary = self.__dict__.copy()
+        dictionary = self.__dict__
+        dictionary['__class__'] = self.__class__.__name__
         dictionary['created_at'] = self.created_at.isoformat()
         dictionary['updated_at'] = self.updated_at.isoformat()
-        dictionary['__class__'] = self.__class__.__name__
         return dictionary
     
     def __str__(self):
         class_name = self.__class__.__name__
-        return "[{}] ({}) {}".format(class_name, self.id, self.__dict__)   
+        return "[{:s}] ({:s}) {}".format(class_name, self.id, self.__dict__)   
