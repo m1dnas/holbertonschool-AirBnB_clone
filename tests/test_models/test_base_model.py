@@ -6,6 +6,7 @@ from datetime import datetime
 from time import sleep
 import unittest
 import json
+from models.base_model import *
 from models.base_model import BaseModel
 
 
@@ -20,4 +21,5 @@ class TestBaseModel(unittest.TestCase):
         b.save()
         self.assertLess(b_update, b.updated_at)
         self.assertEqual(str(b), "[{}] ({}) {}".format(b.__class__.__name__, b.id, b.__dict__))
-        self.assertTrue(type(b.to_dict()), dict)
+        b_dict = b.to_dict()
+        self.assertTrue(type(b_dict), dict)
