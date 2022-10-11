@@ -12,13 +12,16 @@ class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb) "
 
     def do_quit(self, args):
+        """funtion quit"""
         exit()
 
-    def do_EOF(self, args):
+    def do_EOF(self, l):
+        """function EOF"""
         print("")
         exit()
 
-    def do_empty_line(self):
+    def emptyline(self):
+        """Function emptyline"""
         pass
 
 if __name__ == '__main__':
