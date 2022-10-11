@@ -14,7 +14,8 @@ class FileStorage:
 
     def new(self, obj):
         name = obj.__class__.__name__
-        FileStorage.__objects["{}.{}".format(name, obj.id)] = obj
+        key = "{}.{}".format(name, obj.id)
+        FileStorage.__objects[key] = obj
 
     def save(self):
         odict = FileStorage.__objects
