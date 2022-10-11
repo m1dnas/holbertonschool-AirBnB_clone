@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Is the console of project"""
+"""is the console of project"""
 
 
 import cmd
