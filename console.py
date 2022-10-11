@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Is the console of project"""
 
 
 import cmd
@@ -6,6 +7,7 @@ from models.base_model import BaseModel
 
 
 class HBNBCommand(cmd.Cmd):
+    """Define a console Class"""
 
     prompt = "(hbnb) "
 
