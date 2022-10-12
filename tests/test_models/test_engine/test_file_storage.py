@@ -2,13 +2,13 @@
 """"Test of file storage"""
 
 
+import os
 import unittest
 from models import storage
+import models
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
 import json
-
-file = "file.json"
 
 
 class TestFileStorage(unittest.TestCase):
@@ -30,3 +30,16 @@ class TestFileStorage(unittest.TestCase):
         new = storage.all().copy()
         storage.new(BaseModel())
         self.assertNotEqual(new, storage.all())
+
+    def testSave(self):
+
+        storage.save()
+        self.assertTrue(os.path.exists('file.json'))
+
+    def testReload(self):
+        new = BaseModel()
+        storage.save()
+        storage.reload()
+        for obj in storage.all().values():
+            dict = obj
+        self.assertEqual(new.to_dict(), dict.to_dict())
