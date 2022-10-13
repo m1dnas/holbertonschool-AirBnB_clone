@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""is the console of project"""
+"""is the console of the project"""
 
 
 import cmd
@@ -23,6 +23,18 @@ class HBNBCommand(cmd.Cmd):
     def emptyline(self):
         """Function emptyline"""
         pass
+
+    def create(self, args):
+        """Creates a new instance of BaseModel, saves it & prints the id"""
+        if not arg:
+            print("** class name missing **")
+        # Evaluates the expression args to check if it exist
+        try:
+            instance = eval(args)()
+            instance.save()
+            print(instance.id)
+        except:
+            print("** class doesn't exist **")
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
