@@ -37,6 +37,7 @@ class TestBaseModel(unittest.TestCase):
         self.assertDictEqual(b_dict, b.to_dict())
 
     def testSave(self):
-        new = BaseModel()
-        storage.save()
-        self.assertTrue(os.path.exists('file.json'))
+        b = BaseModel()
+        b.save()
+        with open('file.json', 'r') as f:
+            self.assertIn("BaseModel", f.read())
