@@ -3,6 +3,13 @@
 
 import json
 from models.base_model import BaseModel
+from models.base_model import BaseModel
+from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
 
 class FileStorage:
 
@@ -26,13 +33,24 @@ class FileStorage:
             json.dump(objdict, f)
 
     def reload(self):
+        """
+        deserializes the JSON file to __objects
+        """
+        data_dict = {}
+        classes = {
+            "BaseModel": BaseModel,
+            "User": User,
+            "State": State,
+            "City": City,
+            "Amenity": Amenity,
+            "Place": Place,
+            "Review": Review
+        }
         try:
-            with open(FileStorage.__file_path, 'r') as f:
-                ojdict = json.load(f)
-                for i in ojdict.values():
-                    cls = i["__class__"]
-                    del i["__class__"]
-                    self.new(eval(cls)(**i))
+            with open(self.__file_path, 'r') as f:
+                data_dict = json.load(f)
+                for k, v in data_dict.items():
+                    self.__objects[k] = classes[v["__class__"]](**v)
         except FileNotFoundError:
             pass
 
