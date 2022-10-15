@@ -95,6 +95,7 @@ class HBNBCommand(cmd.Cmd):
         for key, value in new.items():
             if key == k:
                 del new[key]
+                models.storage.__objects = new
                 models.storage.save()
                 return
         print("** no instance found **")
