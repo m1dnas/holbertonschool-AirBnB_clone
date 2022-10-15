@@ -73,7 +73,7 @@ class HBNBCommand(cmd.Cmd):
                 return
         print("** no instance found **")
 
-    def do_distroy(self, line):
+    def do_destroy(self, line):
         if line == "" or line is None:
             print("** class name missing **")
         else:
