@@ -86,12 +86,11 @@ class HBNBCommand(cmd.Cmd):
                 k = args[0] + "." + args[1]
                 new = models.storage.all()
 
-                for key in new.kyes():
-                    if key not in new:
+                if k not in new:
                         print("** no instance found **")
-                    if key == k:
-                        del new[key]
-                        models.storage.save()
+                else:
+                    del new[k]
+                    models.storage.save()
 
     def do_all(self, line):
         list = []
