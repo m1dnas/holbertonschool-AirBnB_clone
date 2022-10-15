@@ -74,32 +74,24 @@ class HBNBCommand(cmd.Cmd):
         print("** no instance found **")
 
     def do_distroy(self, line):
-        if not line:
+        if line == "" or line is None:
             print("** class name missing **")
-            return
+        else:
+            args = line.split(' ')
+            if args[0] not in HBNBCommand._classes:
+                print("** class doesn't exist **")
+            elif len(args) < 2:
+                print("** instance id missing **")
+            else:
+                k = args[0] + "." + args[1]
+                new = models.storage.all()
 
-        args = line.split()
-
-        if args[0] not in HBNBCommand._classes:
-            print("** class doesn't exist **")
-            return
-        
-        if len(args) < 2:
-            print("** instance id missing **")
-            return
-
-        k = args[0] + "." + args[1]
-        instance = FileStorage()
-        new = models.storage.all()
-
-        for key, value in new.items():
-            if key == k:
-                del new[key]
-                models.storage.__objects = new
-                models.storage.save()
-                return
-            if key not in new:
-                print("** no instance found **")
+                for key, value in new.items():
+                    if key not in new:
+                        print("** no instance found **")
+                    if key == k:
+                        del new[key]
+                        models.storage.save()
 
     def do_all(self, line):
         list = []
