@@ -98,7 +98,8 @@ class HBNBCommand(cmd.Cmd):
                 models.storage.__objects = new
                 models.storage.save()
                 return
-        print("** no instance found **")
+            if key not in new:
+                print("** no instance found **")
 
     def do_all(self, line):
         list = []
