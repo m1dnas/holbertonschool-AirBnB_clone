@@ -33,7 +33,7 @@ class BaseModel:
         dictionary['created_at'] = dictionary['created_at'].isoformat()
         dictionary['updated_at'] = dictionary['updated_at'].isoformat()
         return dictionary
-    
+
     def __str__(self):
         class_name = self.__class__.__name__
         return "[{:s}] ({:s}) {}".format(class_name, self.id, self.__dict__)
