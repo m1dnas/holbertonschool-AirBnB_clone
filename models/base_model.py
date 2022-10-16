@@ -27,7 +27,6 @@ class BaseModel:
         self.updated_at = datetime.now()
         models.storage.save()
 
-
     def to_dict(self):
         dictionary = self.__dict__.copy()
         dictionary['__class__'] = self.__class__.__name__
@@ -37,4 +36,4 @@ class BaseModel:
     
     def __str__(self):
         class_name = self.__class__.__name__
-        return "[{:s}] ({:s}) {}".format(class_name, self.id, self.__dict__)   
+        return "[{:s}] ({:s}) {}".format(class_name, self.id, self.__dict__)

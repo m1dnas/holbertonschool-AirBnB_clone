@@ -19,7 +19,8 @@ class HBNBCommand(cmd.Cmd):
 
     prompt = "(hbnb) "
     _classes = ["BaseModel", "User", "State", "City",
-                    "Amenity", "Place", "Review"]
+                "Amenity", "Place", "Review"]
+
     def do_quit(self, args):
         """funtion quit"""
         exit()
@@ -58,7 +59,7 @@ class HBNBCommand(cmd.Cmd):
         if args[0] not in HBNBCommand._classes:
             print("** class doesn't exist **")
             return
-        
+
         if len(args) < 2:
             print("** instance id missing **")
             return
@@ -123,11 +124,10 @@ class HBNBCommand(cmd.Cmd):
         if args[0] not in HBNBCommand._classes:
             print("** class doesn't exist **")
             return
-        
+
         if len(args) < 2:
             print("** instance id missing **")
             return
-
 
         k = args[0] + "." + args[1]
         instance = FileStorage()
@@ -141,7 +141,7 @@ class HBNBCommand(cmd.Cmd):
         if not i_value:
             print("** no instance found **")
             return
-        
+
         if len(args) < 3:
             print("** attribute name missing **")
             return

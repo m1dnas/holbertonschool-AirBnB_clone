@@ -20,15 +20,13 @@ class TestFileStorage(unittest.TestCase):
         self.assertEqual(dict, type(FileStorage._FileStorage__objects))
 
     def testAll(self):
-
         dictionary = storage.all()
         self.assertEqual(type(dictionary), dict)
 
     def testNew(self):
-
         new = storage.all().copy()
         storage.new(BaseModel())
         self.assertNotEqual(new, storage.all())
 
     def test_reload(self):
-        self.assertRaises(FileNotFoundError, models.storage.reload())
+        self.assertRaises(TypeError, models.storage.reload())

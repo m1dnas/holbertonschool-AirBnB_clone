@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-
+"""serializes instances to JSON and vice versa"""
 
 import json
 from models.base_model import BaseModel
@@ -11,22 +11,26 @@ from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
 
-class FileStorage:
 
+class FileStorage:
+    """class that serializes and deserializes"""
     __file_path = "file.json"
     __objects = {}
 
     def all(self):
+        """return dict"""
         return FileStorage.__objects
 
     def new(self, obj):
+        """sets in __objects the object with the obj key"""
         name = obj.__class__.__name__
         key = "{}.{}".format(name, obj.id)
         FileStorage.__objects[key] = obj
 
     def save(self):
+        """serializes to a JSON file"""
         objdict = {}
-        
+
         with open(self.__file_path, 'w') as f:
             for key, obj in self.__objects.items():
                 objdict[key] = obj.to_dict()
@@ -53,4 +57,3 @@ class FileStorage:
                     self.__objects[k] = classes[v["__class__"]](**v)
         except FileNotFoundError:
             pass
-
