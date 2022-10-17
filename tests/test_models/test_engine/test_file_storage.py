@@ -33,6 +33,8 @@ class TestFileStorage(unittest.TestCase):
 
     def test_reload(self):
         obj = FileStorage()
+        obj2 = BaseModel()
+        obj2.save()
         obj.all().clear()
         obj.reload()
-        self.assertEqual(len(obj.all()), 0)
+        self.assertNotEqual(len(obj.all()), 0)
