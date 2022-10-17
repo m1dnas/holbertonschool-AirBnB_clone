@@ -30,14 +30,8 @@ class TestFileStorage(unittest.TestCase):
         self.assertNotEqual(new, storage.all())
 
     def test_save(self):
-        storage = FileStorage()
-        storage.save()
-        self.assertTrue(os.path.exists('file.json'))
+        with self.assertRaises(TypeError):
+            models.storage.save(None)
 
     def test_reload(self):
-        storage = FileStorage()
-        all_o = storage.all()
-        for obj_id in all_o.keys():
-            obj = all_o[obj_id]
-        print(obj)
-        self.assertIsNotNone(obj)
+        self.assertRaises(TypeError, models.storage.reload())
