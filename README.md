@@ -1,9 +1,21 @@
-# AirBnB Clone 
+# 🎯AirBnB Clone 
 
-## Description
+## 📌Description
 The first step towards building a full web application, this repository contains a back-end console.
 
-## Console Commands
+## 📌Learning objectives
+* How to create a python package
+* How to create a command interpreter in Python using the cmd module
+* What is Unit testing and how to implement it in a large project
+* How to serialize and deserialize a Class
+* How to write and read a JSON file
+* How to manage datetime
+* What is an UUID
+* What is *args and how to use it
+* What is **kwargs and how to use it
+* How to handle named arguments in a function
+
+## 📌Console Commands
 
 |     Commands      |  Description                                                       |
 | ----------------- | ------------------------------------------------------------------ |
@@ -17,7 +29,7 @@ The first step towards building a full web application, this repository contains
 | update | Updates an instance based on the class name and id by adding or updating attribute and saves changes to a JSON file |
 
 
-## Examples
+## 📌Examples
 
 More Examples
 ```bash
@@ -77,3 +89,8 @@ update
 [BaseModel] (4ce08ef0-2353-4d43-82df-fb34763f7d7a) {'id': '4ce08ef0-2353-4d43-82df-fb34763f7d7a', 'created_at': datetime.datetime(2022, 10, 16, 21, 53, 19, 737300), 'updated_at': datetime.datetime(2022, 10, 16, 21, 55, 58, 708573), 'fefy': '"fufy"'}
 (hbnb)
 ```
+
+## 📌Authors
+
+* [**Damian Caetano**](https://github.com/Damian25121997)
+* [**Felipe Sandim**](https://github.com/m1dnas)
