@@ -19,6 +19,21 @@ The first step towards building a full web application, this repository contains
 
 ## Examples
 
+More Examples
+```bash
+$ ./console.py
+(hbnb) help
+
+Documented commands (type help <topic>):
+========================================
+EOF  help  quit
+
+(hbnb) 
+(hbnb) 
+(hbnb) quit
+$
+```
+
 create
 ```bash
 (hbnb) create BaseModel
