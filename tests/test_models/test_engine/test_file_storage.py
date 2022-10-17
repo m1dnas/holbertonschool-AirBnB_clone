@@ -2,6 +2,7 @@
 """"Test of file storage"""
 
 
+import os
 import unittest
 from models import storage
 import models
@@ -28,5 +29,15 @@ class TestFileStorage(unittest.TestCase):
         storage.new(BaseModel())
         self.assertNotEqual(new, storage.all())
 
+    def test_save(self):
+        storage = FileStorage()
+        storage.save()
+        self.assertTrue(os.path.exists('file.json'))
+
     def test_reload(self):
-        self.assertRaises(TypeError, models.storage.reload())
+        storage = FileStorage()
+        all_o = storage.all()
+        for obj_id in all_o.keys():
+            obj = all_o[obj_id]
+        print(obj)
+        self.assertIsNotNone(obj)
