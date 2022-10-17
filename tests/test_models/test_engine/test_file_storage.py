@@ -32,5 +32,7 @@ class TestFileStorage(unittest.TestCase):
             storage.save(None)
 
     def test_reload(self):
-        with self.assertRaises(TypeError):
-            storage.reload(None)
+        obj = FileStorage()
+        obj.all().clear()
+        obj.reload()
+        self.assertEqual(len(obj.all()), 0)
