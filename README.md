@@ -77,17 +77,3 @@ update
 [BaseModel] (4ce08ef0-2353-4d43-82df-fb34763f7d7a) {'id': '4ce08ef0-2353-4d43-82df-fb34763f7d7a', 'created_at': datetime.datetime(2022, 10, 16, 21, 53, 19, 737300), 'updated_at': datetime.datetime(2022, 10, 16, 21, 55, 58, 708573), 'fefy': '"fufy"'}
 (hbnb)
 ```
-More Examples
-```bash
-$ ./console.py
-(hbnb) help
-
-Documented commands (type help <topic>):
-========================================
-EOF  help  quit
-
-(hbnb) 
-(hbnb) 
-(hbnb) quit
-$
-```
