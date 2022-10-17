@@ -2,7 +2,7 @@
 """"Test of file storage"""
 
 
-import os
+from typing import Type
 import unittest
 from models import storage
 import models
@@ -34,4 +34,5 @@ class TestFileStorage(unittest.TestCase):
             models.storage.save(None)
 
     def test_reload(self):
-        self.assertRaises(TypeError, models.storage.reload())
+        with self.assertRaises(TypeError):
+            models.storage.reload(None)
